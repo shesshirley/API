@@ -1,7 +1,5 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
-import seaborn as sns
 import requests
 import json
 import webbrowser
@@ -68,7 +66,14 @@ s6_names = character_list_cache("s6",s6)
 s7_names = character_list_cache("s7",s7)
 s8_names = character_list_cache("s8",s8)
 total_season_character = s1_names + s2_names + s3_names + s4_names + s5_names + s6_names + s7_names + s8_names
-total_character = list(set(total_season_character))
+clean_total = []
+for i in total_season_character:
+    clean_total.append(i.lower())
+total_character_lower = list(set(clean_total))
+total_character = []
+for i in total_character_lower:
+    total_character.append(i.title())
+
 
 #get result similar to the input without caching
 def find_character(name_input,name_list):
@@ -263,7 +268,7 @@ if __name__ == "__main__":
                 while 1 > 0:
                     #let the user choose the interested character, or back to search the name again, or exit
                     print(f"----------------------------------------------------")
-                    number = input("Please enter the number or 'exit' or 'back':")
+                    number = input("Please enter the number or 'exit':")
                     if number.isdigit():
                         if 1 <= int(number) <= len(result_list):
                             name = result_list[int(number)-1]
@@ -296,7 +301,7 @@ if __name__ == "__main__":
             print(f"Seeing the options below to continue:")
             print(f"1. Viedo for House {house}")
             print(f"2. Check all seasons that have {name}")
-            print(f"3. Search {name} on YouTube to see relevant channels/checklists/videos")
+            print(f"3. Search {name} on YouTube to see relevant videos")
             print(f"----------------------------------------------------")
             option = input("Explore by entring the number or 'exit' or 'back':")
             if option == "exit":
@@ -353,6 +358,7 @@ if __name__ == "__main__":
                         name_list.append(name)
                         print(f"{i+1}. {name}")
                     while 1 > 0:
+                        print(f"----------------------------------------------------")
                         youtube_option = input(f"Enter number to see relevant url or 'exit' or 'back':")
                         if youtube_option.lower() == "exit":
                             require = "exit"
@@ -399,24 +405,3 @@ if __name__ == "__main__":
             break   
         elif require == "back":
             continue 
-        
-        #end one search loop or restart another search loop
-        final = ""
-        while 1 > 0:
-            print(f"----------------------------------------------------")
-            final_input = input("Enter 'yes' to exlpore more characters or 'exit':")
-            if final_input == "yes":
-                break
-            elif final_input.lower() == "exit":
-                final = "exit"
-                break
-            else:
-                print("Error: Invalid Input.")
-                continue
-        if final == "exit":
-            break
-
-
-        
-    
-            
