@@ -1,4 +1,4 @@
-# SI507-Final-Project
+# Using Youtube API to explore Harry Potter
 
 In this project, users will get a chance to learn more about the characters in Harry Potter.               
 To access the data via YouTube API, users need to achieve the API Key to get data from https://developers.google.com/youtube/v3. The base url for searching is https://youtube.googleapis.com/youtube/v3/search and we can apply the key into one of the parameters named key. The required parameter is part and the corresponding value is "snippet". For example, the possible parameter can be: parameter = {"part":"snippet", "key": "AIzaSyCbUlQT962hSYoBc5swSZz1i4o6rSHeEPA"}.             
